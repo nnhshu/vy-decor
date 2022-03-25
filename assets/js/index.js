@@ -44,3 +44,28 @@ window.addEventListener("load", function () {
         });
     });
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const organicContents = document.querySelectorAll(".organic-content");
+
+    const lazyStart = performance.now();
+    window.lazyLoadInstance = new LazyLoad({
+        threshold: 20,
+        callback_loaded: (ins) => {
+            if (organicContents) {
+                organicContents.forEach((el) => {
+                    if (el.contains(ins) && el.classList.contains("expanding")) {
+                        el.style.maxHeight = `${el.scrollHeight + ins.scrollHeight}px`;
+                    } else if (el.contains(ins)) {
+                        if (el.scrollHeight > 300 && el.nextElementSibling == null) {
+                            el.insertAdjacentHTML("afterend", `
+                                <button class="continue-read">Read more</button>
+                            `);
+                        }
+                    }
+                });
+            }
+        }
+    });
+    console.log(`Init lazyload in ${performance.now() - lazyStart} ms`);
+})
