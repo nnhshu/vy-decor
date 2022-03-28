@@ -34,7 +34,6 @@ window.addEventListener("load", function () {
     document.querySelectorAll(".accordion-header.js-accordion-header").forEach((el) => {
         el.addEventListener("click", function () {
             const that = this.nextElementSibling;
-            console.log(that)
             this.classList.toggle("active");
             if (this.classList.contains("active")) {
                 that.style.maxHeight = `${that.scrollHeight}px`;
