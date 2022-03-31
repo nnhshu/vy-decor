@@ -19,19 +19,19 @@
 }
 
 .modal__container {
+    display: flex;
+    flex-direction: column;
     background-color: #fff;
     padding: 30px;
     max-width: 70vw;
     max-height: 90vh;
     border-radius: 4px;
-    overflow-y: auto;
     box-sizing: border-box;
 }
 
 .modal__header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
 }
 
 .modal__title {
@@ -40,11 +40,14 @@
     font-weight: 600;
     font-size: 1.25rem;
     line-height: 1.25;
-    color: #00449e;
+    color: #000;
     box-sizing: border-box;
 }
 
 .modal__close {
+    position: absolute;
+    right: -20px;
+    top: -20px;
     background: transparent;
     border: 0;
     cursor: pointer;
@@ -56,7 +59,7 @@
     width: 40px;
 }
 
-.modal__header .modal__close:before {
+.modal__close:before {
     content: "\2715";
 }
 
@@ -66,6 +69,7 @@
     line-height: 1.5;
     color: rgba(0, 0, 0, .8);
     font-size: 14px;
+    overflow-y: auto;
 }
 
 .modal__content span,
@@ -187,4 +191,78 @@
 .micromodal-slide .modal__container,
 .micromodal-slide .modal__overlay {
     will-change: transform;
+}
+
+.post-control-prev svg, 
+.post-control-next svg {
+    width: 16px;
+    height: 16px;
+    transform: all 200ms;
+}
+
+.modal__header {
+    flex-direction: column;
+}
+
+.post-control {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 0 0 100%;
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px 0px;
+    border-top: 1px solid var(--grey);
+    border-bottom: 1px solid var(--grey);
+}
+
+.post-control-title{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.post-control-prev svg {
+    transform: rotate(180deg);
+}
+
+.post-control-prev, .post-control-next {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    transition: all 200ms;
+}
+
+.post-control-prev:hover, 
+.post-control-next:hover{
+    color: var(--primary);
+}
+
+
+.post-control-prev:hover>svg, 
+.post-control-next:hover>svg{
+    fill: var(--primary)
+}
+
+.post-control-next {
+    flex-direction: row-reverse;
+    gap: 5px;
+}
+
+.modal__content::-webkit-scrollbar-track
+{
+	background-color: #fff;
+}
+
+.modal__content::-webkit-scrollbar
+{
+	width: 6px;
+	background-color: #fff;
+}
+
+.modal__content::-webkit-scrollbar-thumb
+{
+	background-color: #000;
+    border-radius: 10px;
 }

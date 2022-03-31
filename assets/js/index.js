@@ -42,11 +42,21 @@ window.addEventListener("load", function () {
             }
         });
     });
+    document.querySelectorAll(".title-with-icon").forEach((el) => {
+        el.addEventListener("click", function () {
+            const that = this.nextElementSibling;
+            this.classList.toggle("active");
+            if (this.classList.contains("active")) {
+                that.style.maxHeight = `${that.scrollHeight}px`;
+            } else {
+                that.style.maxHeight = 0;
+            }
+        });
+    });
 });
 
 document.addEventListener("DOMContentLoaded", function () {
     const organicContents = document.querySelectorAll(".organic-content");
-
     const lazyStart = performance.now();
     window.lazyLoadInstance = new LazyLoad({
         threshold: 20,
